@@ -1,0 +1,251 @@
+body {
+	background-color: #ffd0a8;
+	font-family: "Poppins", Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	top: 0px;
+	position: fixed;
+	background-color: #ffd0a8;
+	width: 100%;
+}
+
+#logo {
+	font-weight: 800;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+nav p {
+	font-family: "Jost";
+	font-size: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.logo img {
+	padding-top: 10px;
+	width: 120px;
+}
+
+.menu {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.dropdown {
+	position: relative;
+	padding-right: 60px;
+}
+
+.dropdown-content {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	background-color: #ffebdb;
+	width: 240px;
+	overflow: hidden;
+	border: solid #333 1px;
+	border-radius: 10px;
+	box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+	top: calc(100% + 30px);
+	transform: translateY(-10px);
+	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+	opacity: 0;
+	visibility: hidden;
+	user-select: none;
+}
+
+.dropdown.active>.dropbtn+.dropdown-content {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+	visibility: visible;
+}
+
+.dropdown-content span {
+	width: 58px;
+	height: 1px;
+	background-color: #D3D3D3;
+}
+
+.drop-items {
+	display: flex;
+	flex-direction: row;
+	cursor: pointer;
+}
+
+.drop-items a {
+	margin-left: 5px;
+	font-weight: 500;
+}
+
+.drop-items img {
+	width: 30px;
+	padding: 10px;
+}
+
+.dropbtn {
+	border: none;
+	background-color: #ffd0a8;
+	font-size: 19px;
+	cursor: pointer;
+	font-weight: 500;
+	font-family: "Poppins";
+}
+
+.dropbtn:hover {
+	color: grey;
+}
+
+.link {
+	text-decoration: none;
+	color: #333;
+	font-size: 19px;
+	padding: 10px;
+	font-weight: 500;
+}
+
+.auth-link {
+	color: #333;
+	background-color: #ffebdb;
+	text-decoration: none;
+	border: none;
+	border-radius: 20px;
+	font-family: "Alata", "Poppins";
+	font-size: 16px;
+	height: 35px;
+	width: 110px;
+	padding: 8px 12px;
+}
+
+.auth-link:hover {
+	background-color: #ff9b65;
+}
+
+.hamburger {
+	display: none;
+}
+
+.bar {
+	display: block;
+	width: 25px;
+	height: 2px;
+	margin: 5px;
+	transition: all 0.3s ease-in-out;
+	background-color: #292929;
+}
+
+@media only screen and (max-width: 1169px) {
+	nav {
+		justify-content: space-between;
+		margin: 0;
+	}
+	.logo {
+		padding-left: 20px;
+		padding-right: 0;
+	}
+	.menu {
+		position: fixed;
+		top: -110%;
+		left: 0px;
+		opacity: 0;
+		flex-direction: column;
+		background-color: #f7f7f7;
+		width: 100%;
+		border-radius: 0 0 10px 10px;
+		transition: all .5s cubic-bezier(.4, 0, .6, 1);
+		box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+		justify-content: flex-start;
+		align-items: start;
+		height: 100vh;
+	}
+	.menu.active {
+		top: 0px;
+		left: 0px;
+		opacity: 1;
+		height: 100vh;
+		transform: none;
+		padding-top: 60px;
+		padding-left: 40px;
+	}
+	.dropbtn {
+		padding-bottom: 30px;
+		background-color: #f7f7f7;
+		font-size: 25px;
+		font-weight: 500;
+		font-family: "Poppins";
+	}
+	.dropdown.active {
+		margin-bottom: 150px;
+	}
+	.dropdown-content {
+		border: none;
+		box-shadow: none;
+		background-color: #f7f7f7;
+		top: 50px;
+	}
+	.drop-items a {
+		font-size: 20px;
+	}
+	.link {
+		text-decoration: none;
+		color: #333;
+		font-size: 20px;
+		padding: 10px;
+	}
+	
+	.auth {
+		display: flex;
+		flex-direction: column;
+		margin-top: 100px;
+	}
+	.auth-link {
+		color: #333;
+		background-color: #fff; 
+		border: none;
+		border-radius: 30px;
+		font-family: "Alata", "Poppins";
+		font-size: 23px;
+		height: 35px;
+		width: 120px;
+		margin-bottom: 10px;
+		padding-left: 22px;
+	}
+
+	.hamburger {
+		display: block;
+		float: right;
+		cursor: pointer;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	/*Hamburger diventa una X*/
+	.hamburger.active {
+		padding-top: 0px;
+		transition: 0.3s padding ease-out;
+	}
+	.hamburger.active .bar:nth-child(2) {
+		opacity: 0;
+	}
+	.hamburger.active .bar:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+	.hamburger.active .bar:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
+}

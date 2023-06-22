@@ -1,0 +1,156 @@
+body {
+	background-color: #ffd0a8;
+	font-family: "Poppins", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #333;
+	margin: 0;
+	width: 100%;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+}
+
+.prod__card {
+	margin-top: 180px;
+	padding: 20px 0 20px 0;
+	width: 1300px;
+	height: 500px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #ffebdb;
+	border-radius: 10px;
+	box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+.prod__image img {
+	width: 550px;
+}
+
+.prod__info {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 0 10px 50px;
+	border-left: 1px solid grey;
+	width: 100%;
+}
+
+.prod__info h1 {
+	margin:0 ;
+}
+
+.dettagli {
+	margin-bottom: 40px;
+	width: 100%;
+	margin: 0;
+}
+
+.dettagli p {
+	width: 90%
+}
+
+.prod__price {
+	margin-bottom: 30px;
+}
+
+.prod__price p {
+	font-weight: 600;
+	margin: 0;
+}
+
+select {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	padding: 10px 15px 10px 15px;
+	width: 70px;
+	background-color: #EEEEEE;
+	border-radius: 23px;
+	font-size: 17px;
+	font-weight: 500;
+	border: none;
+}
+
+
+#ordernow {
+    border: none;
+    background-color: #333;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: "Alata";
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px 10px 15px;
+}
+
+
+.di__interesse {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	margin-bottom: 100px;
+	padding-bottom: 50px;
+}
+
+.grid_panini {
+	display: grid;
+	  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+	width: 100%;
+	background-color: white;
+	margin-top: 30px;
+}
+
+.panino { 
+	padding: 40px;
+	display:flex; 
+	flex-direction: column;
+	align-items: center;
+	font-weight: 500;
+}
+
+
+.panino img {
+	width: 280px;
+	cursor: pointer;
+}
+
+.panino img:hover {
+	transform: scale(1.1);
+	transition: 0.5s;
+	color: orangered;
+}
+
+.panino:hover {
+	color: orangered;
+} 
+
+
+.popup {
+	display: none;
+}
+
+@media only screen and (max-width: 1442px) {
+	.panino {
+		
+	}
+}
+
+@media only screen and (max-width: 1340px) {
+	.prod__card {
+		width: 95%;
+	}
+	
+	.prod__info {
+		width: calc(95% - 550px);
+	}
+	
+}
+	
+

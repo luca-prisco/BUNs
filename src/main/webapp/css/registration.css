@@ -1,0 +1,100 @@
+:root {
+	--success-color: green;
+	--error-color: red;
+}
+
+body {
+	background-color: #EEEEEE;
+	font-family: "Poppins", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #292929;
+	margin: 0;
+}
+
+.all {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 130px;
+	width: 500px;
+	min-height: calc(100vh - 501px);
+	padding: 30px;
+}
+
+.content form {
+	background-color: white;
+	padding: 30px;
+	border-radius: 10px;
+	width: 100%;
+	box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+.form-top {
+	display: flex;
+	justify-content: center;
+}
+
+.form-top h1 {
+	margin-top: 0;
+	letter-spacing: 0.5px;
+}
+
+.input-control span{
+	font-size: 14px;
+}
+
+.input-control {
+	margin-bottom: 12px;
+}
+
+.input-control label {
+	margin-bottom: 5px;
+	font-size: 14px;
+	display: block;
+}
+
+.input-control input {
+	padding: 13px;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	display: block;
+	width: 94%;
+	font-size: 14px;
+}
+
+.input-control input:focus {
+	outline: 0;
+	border-color: grey;
+}
+
+
+.registrati {
+	cursor: pointer;
+	width: 100%;
+	height: 45px;
+	margin-top: 1rem;
+	border: none;
+	background-color: #292929;
+	border-radius: 5px;
+	color: white;
+	font-size: 17px;
+	text-decoration: none;
+	font-family: "Alata", "Poppins";
+}
+
+.registrati:hover {
+	background-color: orangered;
+}
+
+@media only screen and (max-width: 584px) {
+	.content {
+		margin-top: 110px;
+		width: 80%;
+	}
+}

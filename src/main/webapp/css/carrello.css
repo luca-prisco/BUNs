@@ -1,0 +1,98 @@
+body {
+  background-color: #ffd0a8;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  width: 100%;
+}
+
+.content {
+	background-color: #ffebdb;
+	margin-top: 150px;
+	margin-left: 50px;
+	margin-right: 50px;
+	min-height: calc(100vh - 460px);
+}
+
+.cart-container {
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+table {
+	margin: 50px;
+	background-color: #ffebdb;
+	border-radius: 10px;
+	box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+td {
+	border-bottom: solid lightgrey 1px;
+	padding: 20px;
+}
+
+.cart-container h1 {
+	margin-top: 30px;
+	margin-left: 50px;
+}
+
+.cart-totale {
+	display: flex; 
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+
+
+.ordernow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	width: 30%;
+	height: 50px;
+	margin-top: 1rem;
+	border: none;
+	background-color: #333;
+	border-radius: 5px;
+	color: white;
+	text-decoration: none;
+	font-weight: 500;
+	font-family: "Alata", "Poppins";
+    font-size: 18px;
+}
+
+
+.prodotto-carrello {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.info-prod {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 10px 40px 0px 40px;
+}
+
+.info-prod h3 {
+	margin: 0;
+}
+
+.prezzo-prod {
+	display: flex;
+	padding: 10px 40px 0px 40px;
+	align-items: center;
+}
+
+
+.image-prod img {
+	width: 250px;
+}

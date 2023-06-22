@@ -1,0 +1,47 @@
+body {
+  background-color: #ffd0a8;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.all {display: flex; flex-direction: column;}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #333;
+  width:100%;
+  margin-top: 100px;
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.footer__social h1 {
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.footer__social__icons img {
+  width: 40px;
+  padding: 10px;
+}
+
+.brands {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.brands img {
+	width: 100px;
+	padding: 20px;
+}
