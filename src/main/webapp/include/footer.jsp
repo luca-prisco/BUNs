@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="it-IT" xml:lang="it-IT">
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">

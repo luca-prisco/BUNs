@@ -16,9 +16,12 @@ public class UtenteDAO extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static void doRegistrazione(Utente utente) {
-		try(Connection con = ConnectionPool.getConnection()) {
-			PreparedStatement ps = con.prepareStatement("INSERT INTO Utente (email, nome, cognome, password, via, citta, CAP, provincia, amministratore) VALUES (?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+	public static void doRegistrazione(Utente utente) throws SQLException {
+		Connection con = ConnectionPool.getConnection();
+		PreparedStatement ps = null;
+		
+		try {
+			ps = con.prepareStatement("INSERT INTO Utente (email, nome, cognome, password, via, citta, CAP, provincia, amministratore) VALUES (?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setString(1, utente.getEmail());
 			ps.setString(2, utente.getNome());
@@ -37,9 +40,12 @@ public class UtenteDAO extends HttpServlet {
 		}
 	}
 
-	public static boolean controlloEmail(String email) {
-		try (Connection con = ConnectionPool.getConnection()) {
-			PreparedStatement ps = con.prepareStatement("SELECT email FROM Utente WHERE email=?");
+	public static boolean controlloEmail(String email) throws SQLException {
+		Connection con = ConnectionPool.getConnection();
+		PreparedStatement ps = null;
+		
+		try {
+			ps = con.prepareStatement("SELECT email FROM Utente WHERE email=?");
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
@@ -54,10 +60,10 @@ public class UtenteDAO extends HttpServlet {
 	public boolean checkFormatUtente(Utente utente, String CAP) {
 
 		if (!((utente.getEmail() != null) && (utente.getEmail().trim().length() > 0) 
-				&& (utente.getEmail().matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"))))
+				&& (utente.getEmail().matches("^\\S+@\\S+\\.\\S+$"))))
 			return false;
 		if (!((utente.getNome() != null) && (utente.getNome().trim().length() > 0)
-				&& (utente.getNome().matches("^([A-Za-z\\s]+){1,15}$")))) 
+				&& (utente.getNome().matches("^[A-Za-z]+${1,15}$")))) 
 			return false;
 		if (!((utente.getCognome() != null) && (utente.getCognome().trim().length() > 0) 
 				&& (utente.getCognome().matches("^([A-Za-z\\s]+){1,15}$")))) 
@@ -77,10 +83,12 @@ public class UtenteDAO extends HttpServlet {
 		return true;
 	}
 	
-	public static Utente doLogin(String email, String password) {
+	public static Utente doLogin(String email, String password) throws SQLException {
+		Connection con = ConnectionPool.getConnection();
+		PreparedStatement ps = null;
 		Utente utente = new Utente();
-		try (Connection con = ConnectionPool.getConnection()) {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM Utente WHERE email = ? AND password = ?");
+		try {
+			ps = con.prepareStatement("SELECT * FROM Utente WHERE email = ? AND password = ?");
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();

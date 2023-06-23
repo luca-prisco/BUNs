@@ -28,7 +28,7 @@ public class RegistrazioneServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String via = request.getParameter("via");
 		String citta = request.getParameter("citta");
-		String CAP = request.getParameter("CAP");
+		String cap = request.getParameter("CAP");
 		String provincia = request.getParameter("provincia");
 		
 		Utente u = new Utente();
@@ -42,23 +42,31 @@ public class RegistrazioneServlet extends HttpServlet {
 		u.setProvincia(provincia);
 		u.setAmministratore(false);
 		
-		if(UtenteDAO.controlloEmail(request.getParameter("email"))) {
-			request.setAttribute("controllo", "Email già presente");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registrazione.jsp");
-			dispatcher.forward(request, response);
+		try {
+			if(UtenteDAO.controlloEmail(request.getParameter("email"))) {
+				request.setAttribute("controllo", "Email già presente");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registrazione.jsp");
+				dispatcher.forward(request, response);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
-		if(!(utenteDAO.checkFormatUtente(u, CAP))) {
+		if(!(utenteDAO.checkFormatUtente(u, cap))) {
 			request.getSession().setAttribute("error", "Sono presenti errori nel form.");
-			System.out.println("Errore nel form");
+			System.err.println("Errore nel form");
 			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/WEB-INF/jsp/registrazione.jsp"));
 			dispatcher.forward(request, response);
 			return;
 		}
 		
-		u.setCAP(Integer.parseInt(CAP));
+		u.setCAP(Integer.parseInt(cap));
 		
-		UtenteDAO.doRegistrazione(u);
+		try {
+			UtenteDAO.doRegistrazione(u);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	} 

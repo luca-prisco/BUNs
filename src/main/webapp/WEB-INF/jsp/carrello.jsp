@@ -3,7 +3,7 @@
 <%@page import="model.*"%>
 <%@page import="java.util.*" %>
 <!DOCTYPE html>
-<html>
+<html lang="it-IT" xml:lang="it-IT">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,12 @@
 			else if(carrello != null || carrello.size() > 0)
 			{ %>
 			<table>
-				<h1>Carrello</h1>
+			<caption>Carrello</caption>
+				<tr>
+					<th></th>
+					<th>Descrizione</th>
+					<th>Prezzo</th>	
+				</tr>
 				<% for(int i=0; i<carrello.size(); i++) {
 					int id = carrello.get(i).getIdProdotto();
 					String pathImg = "img/prodotti/" + id + ".png";

@@ -23,10 +23,16 @@ body {
 }
 
 table {
-	margin: 50px;
+	margin: 150px 50px 50px 50px;
 	background-color: #ffebdb;
 	border-radius: 10px;
 	box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+caption {
+	font-size: 40px;
+	font-weight: 600;
+	padding-bottom: 30px;
 }
 
 td {
@@ -47,8 +53,6 @@ td {
 	margin-top: 50px;
 }
 
-
-
 .ordernow {
 	display: flex;
 	justify-content: center;
@@ -63,7 +67,7 @@ td {
 	color: white;
 	text-decoration: none;
 	font-weight: 500;
-	font-family: "Alata", "Poppins";
+	font-family: "Alata", "Poppins", sans-serif;
     font-size: 18px;
 }
 

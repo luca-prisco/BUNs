@@ -4,7 +4,7 @@
 <%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="it-IT" xml:lang="it-IT">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,7 @@
 			<%String primoPianoImg = "img/prodotti/" + primoPiano.getIdProdotto() + ".png"; %>
 			<div class="homepage__content">
 				<div class="prod__description">
-					<h1><%=primoPiano.getNome()%><img src="img/icon/star.png"></h1>
+					<h1><%=primoPiano.getNome()%><img src="img/icon/star.png" alt="no img"></h1>
 					<p><%=primoPiano.getDettagli()%></p>
 					<div class="prod__buttons">
 						<button class="ordernow">

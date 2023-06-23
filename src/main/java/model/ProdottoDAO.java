@@ -24,20 +24,27 @@ public class ProdottoDAO extends HttpServlet {
 		Prodotto p = new Prodotto();
 		
 		String sql = "SELECT * FROM prodotto WHERE nome LIKE ?";
-		ps = con.prepareStatement(sql);
-		ps.setString(1, '%' + nome + '%');
-		ResultSet rs = ps.executeQuery();
 		
-		if (rs.next()) {
-			p.setIdProdotto(rs.getInt("IDProdotto"));
-			p.setNome(rs.getString("nome"));
-			p.setDescrizione(rs.getString("descrizione"));
-			p.setPrezzo(rs.getDouble("prezzo"));
-			p.setDisponibilita(rs.getInt("disponibilita"));
-			p.setDettagli(rs.getString("dettagli"));
-			p.setNumVendite(rs.getInt("numVendite"));
-			p.setTipologia(rs.getString("tipologia"));
-			p.setCategoria(rs.getString("categoria"));
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, '%' + nome + '%');
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				p.setIdProdotto(rs.getInt("IDProdotto"));
+				p.setNome(rs.getString("nome"));
+				p.setDescrizione(rs.getString("descrizione"));
+				p.setPrezzo(rs.getDouble("prezzo"));
+				p.setDisponibilita(rs.getInt("disponibilita"));
+				p.setDettagli(rs.getString("dettagli"));
+				p.setNumVendite(rs.getInt("numVendite"));
+				p.setTipologia(rs.getString("tipologia"));
+				p.setCategoria(rs.getString("categoria"));
+			}
+			return p;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
 		}
 		return p;
 	}
@@ -48,28 +55,35 @@ public class ProdottoDAO extends HttpServlet {
 		String tipologia = "Panino";
 		
 		String sql = "SELECT * FROM prodotto WHERE tipologia=?";
-		ps = con.prepareStatement(sql);
-		ps.setString(1, tipologia);
 		
-		Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		
-		ResultSet rs = ps.executeQuery();
-
-		while (rs.next()) {
-			Prodotto p = new Prodotto();
-			p.setIdProdotto(rs.getInt("IDProdotto"));
-			p.setNome(rs.getString("nome"));
-			p.setDescrizione(rs.getString("descrizione"));
-			p.setPrezzo(rs.getDouble("prezzo"));
-			p.setDisponibilita(rs.getInt("disponibilita"));
-			p.setDettagli(rs.getString("dettagli"));
-			p.setNumVendite(rs.getInt("numVendite"));
-			p.setTipologia(rs.getString("tipologia"));
-			p.setCategoria(rs.getString("categoria"));
-
-			prodotti.add(p);
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, tipologia);
+			
+			Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+			
+			ResultSet rs = ps.executeQuery();
+	
+			while (rs.next()) {
+				Prodotto p = new Prodotto();
+				p.setIdProdotto(rs.getInt("IDProdotto"));
+				p.setNome(rs.getString("nome"));
+				p.setDescrizione(rs.getString("descrizione"));
+				p.setPrezzo(rs.getDouble("prezzo"));
+				p.setDisponibilita(rs.getInt("disponibilita"));
+				p.setDettagli(rs.getString("dettagli"));
+				p.setNumVendite(rs.getInt("numVendite"));
+				p.setTipologia(rs.getString("tipologia"));
+				p.setCategoria(rs.getString("categoria"));
+	
+				prodotti.add(p);
+			}
+			return prodotti;
 		}
-		return prodotti;
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public Collection<Prodotto> doRetrieveBevande() throws SQLException {
@@ -78,28 +92,34 @@ public class ProdottoDAO extends HttpServlet {
 		String tipologia = "Bevanda";
 		
 		String sql = "SELECT * FROM prodotto WHERE tipologia=?";
-		ps = con.prepareStatement(sql);
-		ps.setString(1, tipologia);
 		
-		Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		
-		ResultSet rs = ps.executeQuery();
-
-		while (rs.next()) {
-			Prodotto p = new Prodotto();
-			p.setIdProdotto(rs.getInt("IDProdotto"));
-			p.setNome(rs.getString("nome"));
-			p.setDescrizione(rs.getString("descrizione"));
-			p.setPrezzo(rs.getDouble("prezzo"));
-			p.setDisponibilita(rs.getInt("disponibilita"));
-			p.setDettagli(rs.getString("dettagli"));
-			p.setNumVendite(rs.getInt("numVendite"));
-			p.setTipologia(rs.getString("tipologia"));
-			p.setCategoria(rs.getString("categoria"));
-
-			prodotti.add(p);
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, tipologia);
+			
+			Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+			
+			ResultSet rs = ps.executeQuery();
+	
+			while (rs.next()) {
+				Prodotto p = new Prodotto();
+				p.setIdProdotto(rs.getInt("IDProdotto"));
+				p.setNome(rs.getString("nome"));
+				p.setDescrizione(rs.getString("descrizione"));
+				p.setPrezzo(rs.getDouble("prezzo"));
+				p.setDisponibilita(rs.getInt("disponibilita"));
+				p.setDettagli(rs.getString("dettagli"));
+				p.setNumVendite(rs.getInt("numVendite"));
+				p.setTipologia(rs.getString("tipologia"));
+				p.setCategoria(rs.getString("categoria"));
+	
+				prodotti.add(p);
+			}
+			return prodotti;
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
-		return prodotti;
+		return null;
 	}
 	
 	public Collection<Prodotto> doRetrieveByCategoria(String azione) throws SQLException {
@@ -107,28 +127,35 @@ public class ProdottoDAO extends HttpServlet {
 		PreparedStatement ps = null;
 		
 		String sql = "SELECT * FROM prodotto WHERE categoria=?";
-		ps = con.prepareStatement(sql);
-		ps.setString(1, azione);
 		
-		Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
-		
-		ResultSet rs = ps.executeQuery();
-		
-		while (rs.next()) {
-			Prodotto p = new Prodotto();
-			p.setIdProdotto(rs.getInt("IDProdotto"));
-			p.setNome(rs.getString("nome"));
-			p.setDescrizione(rs.getString("descrizione"));
-			p.setPrezzo(rs.getDouble("prezzo"));
-			p.setDisponibilita(rs.getInt("disponibilita"));
-			p.setDettagli(rs.getString("dettagli"));
-			p.setNumVendite(rs.getInt("numVendite"));
-			p.setTipologia(rs.getString("tipologia"));
-			p.setCategoria(rs.getString("categoria"));
-
-			prodotti.add(p);
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, azione);
+			
+			Collection<Prodotto> prodotti = new LinkedList<Prodotto>();
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Prodotto p = new Prodotto();
+				p.setIdProdotto(rs.getInt("IDProdotto"));
+				p.setNome(rs.getString("nome"));
+				p.setDescrizione(rs.getString("descrizione"));
+				p.setPrezzo(rs.getDouble("prezzo"));
+				p.setDisponibilita(rs.getInt("disponibilita"));
+				p.setDettagli(rs.getString("dettagli"));
+				p.setNumVendite(rs.getInt("numVendite"));
+				p.setTipologia(rs.getString("tipologia"));
+				p.setCategoria(rs.getString("categoria"));
+	
+				prodotti.add(p);
+			}
+			return prodotti;
 		}
-		return prodotti;
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 

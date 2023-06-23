@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -20,21 +19,26 @@ public class ConnectionPool {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("DB driver not found:"+ e.getMessage());
+			System.err.println("DB driver not found:"+ e.getMessage());
 		} 
 	}
 	
 	private static synchronized Connection createDBConnection() throws SQLException {
 		Connection newConnection = null;
 
-		String db_name = "buns";
-		String db_username = "root";
-		String db_password = "1234";
-		String url = "jdbc:mysql://localhost:3306/"+ db_name + "?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true"
+		String dbName = "buns";
+		String dbUsername = "root";
+		String dbPassword = "1234";
+		String url = "jdbc:mysql://localhost:3306/"+ dbName + "?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true"
 				+ "&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		
-		newConnection = DriverManager.getConnection(url, db_username, db_password);
-
+		try {
+		newConnection = DriverManager.getConnection(url, dbUsername, dbPassword);
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 		newConnection.setAutoCommit(true);
 		return newConnection;
 	}
@@ -44,7 +48,7 @@ public class ConnectionPool {
 		Connection connection;
 
 		if (!freeDbConnections.isEmpty()) {
-			connection = (Connection) freeDbConnections.get(0);
+			connection = freeDbConnections.get(0);
 			freeDbConnections.remove(0);
 
 			try {
@@ -61,7 +65,7 @@ public class ConnectionPool {
 		return connection;
 	}
 
-	public static synchronized void releaseConnection(Connection connection) throws SQLException {
+	public static synchronized void releaseConnection(Connection connection) {
 		if(connection != null) freeDbConnections.add(connection);
 	}
 }

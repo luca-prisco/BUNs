@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="it-IT" xml:lang="it-IT">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,11 +27,11 @@
 	          <button class="dropbtn" data-dropdown-button>Panini</button>
 	          <div class="dropdown-content">
 	            <div class="drop-items">
-	              <img src="img/navbar/steak.png">
+	              <img src="img/navbar/steak.png" alt="Carne">
 	              <a href="StartServlet?action=Carne" class="link">Carne</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/pollo.png">
+	              <img src="img/navbar/pollo.png" alt="Pollo">
 	              <a href="StartServlet?action=Pollo" class="link">Pollo</a>
 	            </div>
 	          </div>
@@ -40,15 +40,15 @@
 	          <button class="dropbtn" data-dropdown-button>Patate</button>
 	          <div class="dropdown-content">
 	            <div class="drop-items">
-	              <img src="img/navbar/fries.png">
+	              <img src="img/navbar/fries.png" alt="Fries">
 	              <a href="StartServlet?action=Classiche" class="link">Classiche</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/dippers.svg">
+	              <img src="img/navbar/dippers.svg" alt="Dippers">
 	              <a href="StartServlet?action=Dippers" class="link">Dippers</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/american.png">
+	              <img src="img/navbar/american.png" alt="american">
 	              <a href="StartServlet?action=Dolci" class="link">Americane dolci</a>
 	            </div>
 	          </div>
@@ -57,15 +57,15 @@
 	          <button class="dropbtn" data-dropdown-button>Bevande</button>
 	          <div class="dropdown-content">
 	            <div class="drop-items">
-	              <img src="img/navbar/wine.png">
+	              <img src="img/navbar/wine.png" alt="Alcoliche">
 	              <a href="StartServlet?action=Alcolica" class="link">Alcoliche</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/drink.png">
+	              <img src="img/navbar/drink.png" alt="Analcoliche">
 	              <a href="StartServlet?action=Analcolica" class="link">Analcoliche</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/energy.png">
+	              <img src="img/navbar/energy.png" alt="Energy">
 	              <a href="StartServlet?action=Energy" class="link">Energy drink</a>
 	            </div>
 	          </div>
@@ -80,7 +80,7 @@
 	        <% if(session.getAttribute("Utente")==null)
 		    {%>
 	        <div class="auth">
-	          <a href="StartServlet?action=login" class="auth-link"><img src="img/icon/user.svg" style="padding-right: 10px;">Accedi</a>
+	          <a href="StartServlet?action=login" class="auth-link"><img src="img/icon/user.svg " style="padding-right: 10px;" alt="Non disponibile">Accedi</a>
 	          <a href="Registrazione" class="auth-link">Registrati</a>
 	        </div>
 	       	<%}
@@ -88,7 +88,7 @@
 	        {%>
 	        <%Utente u = (Utente) session.getAttribute("Utente");%>
 	        <div class="dropdown" data-dropdown>
-	          <button class="dropbtn" data-dropdown-button><%=u.getNome() %><img src="img/icon/user.svg" style="padding-left: 10px;"></button>
+	          <button class="dropbtn" data-dropdown-button><%=u.getNome() %><img src="img/icon/user.svg" style="padding-left: 10px;" alt="Non disponibile"></button>
 	          <div class="dropdown-content">
 	            <div class="drop-items">
 	              <a href="" class="link"><%=u.getNome()%> <%=u.getCognome() %></a>
@@ -97,15 +97,15 @@
 	            	<span></span><span></span><span></span>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/account.png">
+	              <img src="img/navbar/account.png" alt="Non disponibile">
 	              <a href="" class="link">I miei dati</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/ordine.png">
+	              <img src="img/navbar/ordine.png" alt="Non disponibile">
 	              <a href="" class="link">I miei ordini</a>
 	            </div>
 	            <div class="drop-items">
-	              <img src="img/navbar/logout.png">
+	              <img src="img/navbar/logout.png" alt="Non disponibile">
 	              <a href="Login?action=logout" class="link">Logout</a>
 	            </div>
 	          </div>

@@ -21,39 +21,40 @@ public class CarrelloServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Utente u = (Utente) session.getAttribute("Utente");
 		ArrayList<Prodotto> cartList = new ArrayList<Prodotto>();
 		ArrayList<Integer> qList = new ArrayList<Integer>();
+		int quantitaProd = Integer.valueOf(request.getParameter("quantita"));
+		
 		if (u != null) {
-			ArrayList<Prodotto> cart_list = (ArrayList<Prodotto>) session.getAttribute("cart-list");
-			ArrayList<Integer> q_List = (ArrayList<Integer>) session.getAttribute("quantitaArticoli");
+			ArrayList<Prodotto> carrelloList = (ArrayList<Prodotto>) session.getAttribute("cart-list");
+			ArrayList<Integer> quantitaList = (ArrayList<Integer>) session.getAttribute("quantitaArticoli");
 			Prodotto p = (Prodotto) session.getAttribute("prod");
 			int id = p.getIdProdotto();
-			if (cart_list == null && q_List == null) {
+			if (carrelloList == null && quantitaList == null) {
 				cartList.add(p);
-				qList.add(Integer.valueOf(request.getParameter("quantita")));
+				qList.add(quantitaProd);
 				session.setAttribute("cart-list", cartList);
 				session.setAttribute("quantitaArticoli", qList);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("HomeServlet");
 				dispatcher.forward(request, response);
 			} else {
-				cartList = cart_list;
-				qList = q_List;
+				cartList = carrelloList;
+				qList = quantitaList;
 				boolean exist = false;
-				for (int i = 0; i < cart_list.size(); i++) {
-					if ((cart_list.get(i).getIdProdotto() == id) && request.getParameter("quantita") != null) {
+				for (int i = 0; i < carrelloList.size(); i++) {
+					if ((carrelloList.get(i).getIdProdotto() == id) && quantitaProd > 0) {
 						exist = true;
 						int qval = qList.get(i);
-						qval += Integer.valueOf((request.getParameter("quantita")));
+						qval += quantitaProd;
 						qList.set(i, qval);
 					}
 				}
 				if (!exist && request.getParameter("quantita") != null) {
 					cartList.add(p);
-					qList.add(Integer.valueOf(request.getParameter("quantita")));
+					qList.add(quantitaProd);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("HomeServlet");
 					dispatcher.forward(request, response);
 				} else {

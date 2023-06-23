@@ -1,13 +1,5 @@
-const namePattern = /^[A-Za-z]+$/;
-const cognomePattern = /^[A-Za-z]+$/;
-const emailPattern = /^\S+@\S+\.\S+$/;
-const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-const viaPattern = /^([A-Za-z]{3,5}\s[\sA-Za-z]{3,30}\s[0-9]{1,3})$/;
-const cittaPattern = /^[('A-Za-z\s)+]{3,40}$/;
-const capPattern = /^(\d{5})+$/;
-const provinciaPattern = /^[(A-Z)]{2}$/;
 let count = 1;
-const nomeErrorMessage = "This field should contain only letters";
+const nomeErrorMessage = "Questo campo dovrebbe contenere solo lettere";
 const cognomeErrorMessage = "Questo campo dovrebbe contenere solo lettere";
 const emailErrorMessage = "Il campo email dovrebbe essere nella forma username@domain.ext";
 const emptyFieldErrorMessage = "Questo campo non puo' essere vuoto";
@@ -53,26 +45,26 @@ function validate() {
 	}
 	
 	let spanPassword = document.getElementById("errorPassword");
-	if (!validateFormElem(form.password, passwordPattern, spanPassword, passwordErrorMessage)){
+	if (!validateFormElem(form.password, spanPassword, passwordErrorMessage)){
 		valid = false;
 	}
 
 	let spanVia = document.getElementById("errorVia");
-	if (!validateFormElem(form.via, viaPattern, spanVia, viaErrorMessage)){
+	if (!validateFormElem(form.via, spanVia, viaErrorMessage)){
 		valid = false;
 	}
 
 	let spanCitta = document.getElementById("errorCitta");
-	if (!validateFormElem(form.citta, cittaPattern, spanCitta, cittaErrorMessage)){
+	if (!validateFormElem(form.citta, spanCitta, cittaErrorMessage)){
 		valid = false;
 	}
 
 	let spanCap = document.getElementById("errorCap");
-	if (!validateFormElem(form.cap, capPattern, spanCap, capErrorMessage)){
+	if (!validateFormElem(form.cap, spanCap, capErrorMessage)){
 		valid = false;
 	}
 	let spanProvincia = document.getElementById("errorProvincia");
-	if (!validateFormElem(form.provincia, provinciaPattern, spanProvincia, provinciaErrorMessage)){
+	if (!validateFormElem(form.provincia, spanProvincia, provinciaErrorMessage)){
 		valid = false;
 	}
 	return valid;
